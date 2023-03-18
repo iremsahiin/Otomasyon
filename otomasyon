@@ -1,0 +1,46 @@
+import sys
+from PyQt5 import QtWidgets as qtw
+from aiogrencikayit import Ui_MainWindow 
+from PyQt5.QtWidgets import QTableWidgetItem
+
+class Uygulama(qtw.QMainwindow):
+    def __init__(self) -> None:
+        super().__init__()
+        self.ui=Ui_MainWindow() 
+        self.ui.setup.ui(self)
+
+        self.ui.Bolum.addItems(["Tıp", "MDBF", "İBF" ])
+
+
+def kayitekle(self):
+    ad=self.ui.Ad.text()
+    tc=self.ui.TcNo.text()
+
+
+bolum=self.ui.Bolum.currentText()
+dtarih=self.ui.DogumTarihi.selectedDate()
+ydtarih=dtarih.toString("dd-MM-yyyy")
+
+satırsayısı=self.ui.Tablo.rowCount()-1
+
+     self.ui.Tablo.setItem(satırsayısı,0,QTableWidgetItem(ad))
+     self.ui.Tablo.setItem(satırsayısı,1,QTableWidgetItem(soyad))
+     self.ui.Tablo.setItem(satırsayısı,2,QTableWidgetItem(tcno))
+     self.ui.Tablo.setItem(satırsayısı,3,QTableWidgetItem(bolum))
+     self.ui.Tablo.setItem(satırsayısı,4,QTableWidgetItem(ydtarih))
+
+     self.ui.Tablo.İnsertRow(satırsayısı+1)
+
+ 
+print(ad, soyad, tc, bolum, dtarih)
+
+
+
+def app():
+    app=qtw.QApplication(sys.argv)
+    win= Uygulama()
+    win.show()
+    sys.exit(app.exec_())
+
+app()
+
